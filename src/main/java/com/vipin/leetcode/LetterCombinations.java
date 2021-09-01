@@ -10,6 +10,7 @@ import java.util.*;
 /**
  *
  * @author Vipin
+ * link - https://leetcode.com/problems/letter-combinations-of-a-phone-number/submissions/
  */
 public class LetterCombinations {
     public static void main(String[] args) {
@@ -23,13 +24,19 @@ public class LetterCombinations {
         
         for (int i = 0; i < digits.length(); i++) {
             char digit = digits.charAt(i);
+            System.out.println(digit);
             
             List<String> characters = getLettersForDigit(digit);
             List<String> temp = new ArrayList<>();
             
             for (String character : characters) {
+                System.out.println("character : " + character);
+                
+                if (result.isEmpty()) temp.add(character+"");
+                
                 for (String str : result) {
                     temp.add(str+character);
+                    System.out.println(str+character);
                 }    
             }
             
@@ -42,6 +49,7 @@ public class LetterCombinations {
     private static List<String> getLettersForDigit(char digit) {
         switch (digit) {
             case '2':
+                System.out.println("func : " + digit);
                 return Arrays.asList("a","b","c");
             case '3':
                 return Arrays.asList("d","e","f");
